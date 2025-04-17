@@ -10,11 +10,11 @@ export default function InputLabel({
         <label
             {...props}
             className={
-                `block text-sm font-medium text-gray-700 dark:text-gray-300 ` +
+                `fieldset ` +
                 className
             }
         >
-            {value ? value : children}
+            <span className={"fieldset-legend"}>{value ? value : children}</span>
         </label>
     );
 }
