@@ -2,7 +2,7 @@
 
 namespace App\Enums;
 
-enum RolesEnum
+enum RolesEnum: string
 {
-    //
+    
 }
