@@ -10,6 +10,11 @@ function Navbar() {
                 <Link href={"/"} className="btn btn-ghost text-xl">RabiulStore</Link>
             </div>
             <div className="flex gap-8">
+                {user && 
+                <div>
+                    <Link className={"btn btn-primary"} href={route('dashboard')}>Dashboard</Link>
+                </div>
+                }
                 <div className="dropdown dropdown-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
                     <div className="indicator">
@@ -29,7 +34,11 @@ function Navbar() {
                     </div>
                 </div>
                 </div>
-                {user && <div className="dropdown dropdown-end">
+                {user &&
+                
+                  
+                 <div className="dropdown dropdown-end">
+                
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                     <img
@@ -47,7 +56,8 @@ function Navbar() {
                     </li>
                     <li><Link href={route('logout')} method={"post"} as="button">Logout</Link></li>
                 </ul>
-                </div>}
+                </div>
+                }
                 {!user && 
                 <>
                 <Link className={"btn btn-primary"} href={route('login')}>Login</Link> 
