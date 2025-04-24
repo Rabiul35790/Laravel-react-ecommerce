@@ -23,11 +23,9 @@ return new class extends Migration
                 ->constrained('categories');
             $table->boolean('active')
                 ->default(true);
-
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
