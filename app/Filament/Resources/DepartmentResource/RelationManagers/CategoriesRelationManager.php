@@ -45,7 +45,7 @@ class CategoriesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name')
                  ->sortable()
                  ->searchable(),
-
+                //category with parent chlid relation
                 Tables\Columns\TextColumn::make('parent.name')
                  ->sortable()
                  ->searchable(),
