@@ -3,9 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Enums\ProductStatusEnum;
+use App\Enums\RolesEnum;
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
 use App\Models\Product;
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
@@ -15,6 +17,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -109,13 +113,34 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title')
+                    ->sortable()
+                    ->searchable()
+                    ->words(10),
+
+                TextColumn::make('status')
+                ->badge()
+                ->colors(ProductStatusEnum::colors()),
+
+                TextColumn::make('department.name'),
+                TextColumn::make('category.name'),
+                TextColumn::make('created_at')
+                ->dateTime(),
+                TextColumn::make('quantity')
+                ->sortable()
+                ->searchable(),
+
+
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                ->options(ProductStatusEnum::labels()),
+                SelectFilter::make('department_id')
+                ->relationship('department', 'name'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -138,5 +163,10 @@ class ProductResource extends Resource
             'create' => Pages\CreateProduct::route('/create'),
             'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
+    }
+
+    public static function canViewAny(): bool {
+        $user = Filament::auth()->user();
+        return $user && $user->hasRole(RolesEnum::Vendor);
     }
 }
