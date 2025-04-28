@@ -8,6 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
+        //schema of media table where image will be stored
         Schema::create('media', function (Blueprint $table) {
             $table->id();
 
