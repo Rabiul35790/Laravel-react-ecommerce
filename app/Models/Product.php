@@ -14,6 +14,8 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
 
     public function registerMediaConversions(?Media $media = null): void{
+
+        //for creating 3 folder in public folder where all image will be grouped according to size
         $this->addMediaConversion("thumb")
             ->width(100);
 
