@@ -16,13 +16,13 @@ class Product extends Model implements HasMedia
     public function registerMediaConversions(?Media $media = null): void{
 
         //for creating 3 folder in public folder where all image will be grouped according to size
-        $this->addMediaConversion("thumb")
+        $this->addMediaConversion('thumb')
             ->width(100);
 
-        $this->addMediaConversion("small")
+        $this->addMediaConversion('small')
             ->width(480);
 
-        $this->addMediaConversion("large")
+        $this->addMediaConversion('large')
             ->width(1200);
     }
 
