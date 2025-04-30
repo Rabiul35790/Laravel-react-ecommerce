@@ -27,12 +27,13 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 use Filament\Pages\SubNavigationPosition;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-queue-list';
 
 
     protected static SubNavigationPosition $subNavigationPosition = SubNavigationPosition::End;
@@ -120,6 +121,15 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
+                SpatieMediaLibraryImageColumn::make('images')
+                    ->collection('images')
+                    ->limit(1)
+                    ->conversion('thumb')
+                    ->label(__('Image')),
+                    // ->circular()
+                    // ->size(50)
+                    // ->default('https://via.placeholder.com/150'),
+
                 TextColumn::make('title')
                     ->sortable()
                     ->searchable()
