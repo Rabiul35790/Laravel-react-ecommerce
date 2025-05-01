@@ -18,6 +18,7 @@ class ProductImages extends EditRecord
     public function form(Form $form): Form {
         return $form
             ->schema([
+                //adding image in file
                 SpatieMediaLibraryFileUpload::make('images')
                     ->image()
                     ->multiple()
