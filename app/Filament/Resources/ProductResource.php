@@ -185,6 +185,7 @@ class ProductResource extends Resource
 
     public static function getRecordSubNavigation(Page $page): array {
         return $page->generateNavigationItems([
+            //right side sub navigation
                 EditProduct::class,
                 ProductImages::class,
         ]);
