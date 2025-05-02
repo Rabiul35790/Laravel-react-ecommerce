@@ -12,6 +12,7 @@ class CreateProduct extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array {
 
+        //data not sending to database without these fields value that's why added these
         $data['created_by'] = auth()->id();
         $data['updated_by'] = auth()->id();
         return $data;

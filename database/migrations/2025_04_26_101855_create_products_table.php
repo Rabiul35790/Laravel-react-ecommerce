@@ -12,6 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //these data sending to at the time of creating product with all foreign key and drop down
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title', 2000);
