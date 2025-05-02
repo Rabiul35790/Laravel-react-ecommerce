@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //create department table for storing department data of department where will include category and product
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -18,7 +19,7 @@ return new class extends Migration
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->boolean('active')->default(true);
-            
+
             $table->timestamps();
         });
     }
