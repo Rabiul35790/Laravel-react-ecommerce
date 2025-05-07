@@ -29,6 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
+            ->sidebarWidth('14rem')
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -55,7 +56,7 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
 
                 'auth',
-                sprintf('role:%s|%s', 
+                sprintf('role:%s|%s',
                     RolesEnum::Admin->value,
                     RolesEnum::Vendor->value,
                 )
