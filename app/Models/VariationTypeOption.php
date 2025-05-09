@@ -15,7 +15,7 @@ class VariationTypeOption extends Model implements HasMedia
 
     public function registerMediaConversions(?Media $media = null): void{
 
-        //for creating 3 folder in public folder where all image will be grouped according to size
+        //Variation image conversions
         $this->addMediaConversion('thumb')
             ->width(100);
 
