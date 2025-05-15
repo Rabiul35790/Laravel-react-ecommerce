@@ -9,6 +9,8 @@ class VariationType extends Model
 {
     public $timestamps = false;
 
+    //to display available variation dropdown
+
     public function options(): HasMany
     {
         return $this->hasMany(VariationTypeOption::class, 'variation_type_id');
