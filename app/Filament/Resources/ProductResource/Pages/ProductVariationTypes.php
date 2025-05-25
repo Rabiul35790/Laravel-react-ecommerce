@@ -18,7 +18,7 @@ class ProductVariationTypes extends EditRecord
 
     protected static ?string $navigationIcon = 'heroicon-o-table-cells';
 
-//product variation type input form schema
+//product variation type input form schema goes from here
     public function form(Form $form): Form {
         return $form
             ->schema([
